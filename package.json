@@ -10,10 +10,23 @@
     "type": "git",
     "url": "git+https://github.com/gzaban/webpack-and-split-code-test.git"
   },
-  "author": "",
+  "author": "Guy Tzaban",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gzaban/webpack-and-split-code-test/issues"
   },
-  "homepage": "https://github.com/gzaban/webpack-and-split-code-test#readme"
+  "homepage": "https://github.com/gzaban/webpack-and-split-code-test#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0"
+  }
 }
