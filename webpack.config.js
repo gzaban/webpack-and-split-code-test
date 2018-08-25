@@ -1,11 +1,33 @@
 const path = require('path');
-// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
 	mode: 'production',
+	optimization: {
+		minimizer: [
+			new UglifyJsPlugin({
+				cache: true,
+				parallel: true,
+				sourceMap: true // set to true if you want JS source maps
+			}),
+			new OptimizeCSSAssetsPlugin({})
+		],
+		splitChunks: {
+			cacheGroups: {
+				styles: {
+					name: 'styles',
+					test: /\.css$/,
+					chunks: 'all',
+					enforce: true
+				}
+			}
+		}
+	},
 	entry: {
 		polyfills: './src/polyfills.js',
 		index: './src/index.js'
@@ -22,22 +44,23 @@ module.exports = {
 				test: /\.js$/,
 				include: path.resolve(__dirname, 'src'),
 				use: 'babel-loader'
+			}, {
+				test: /\.(sa|sc|c)ss$/,
+				use: [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					// 'postcss-loader',
+					'sass-loader',
+				],
 			}
-			/*
-			, {
-				test: /\.scss$/,
-				use: ExtractTextPlugin.extract({
-					fallback: 'style-loader',
-					use: ['css-loader', 'sass-loader']
-				})
-			}
-			*/
 		]
 	},
 
 	plugins: [
 		new CleanWebpackPlugin(['dist']),
-		// new ExtractTextPlugin('css/styles.css'),
+		new MiniCssExtractPlugin({
+			filename: '[name].[contenthash].css',
+		}),
 		new webpack.ProvidePlugin({
 			_: 'lodash'
 		}),
