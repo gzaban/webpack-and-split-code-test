@@ -1,31 +1,49 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-	entry: './src/index.js',
+	mode: 'production',
+	entry: {
+		polyfills: './src/polyfills.js',
+		index: './src/index.js'
+	},
 
 	output: {
-		path: path.resolve('dist'),
-		filename: 'bundle.js'
+		path: path.resolve(__dirname, 'dist'),
+		filename: '[name].js'
 	},
 
 	module: {
-		rules: [{
-			test: /\.js$/,
-			use: 'babel-loader'
-		},
-
+		rules: [
 			{
+				test: /\.js$/,
+				use: 'babel-loader'
+			}
+			/*
+			, {
 				test: /\.scss$/,
 				use: ExtractTextPlugin.extract({
 					fallback: 'style-loader',
 					use: ['css-loader', 'sass-loader']
 				})
 			}
+			*/
 		]
 	},
 
 	plugins: [
-		new ExtractTextPlugin('css/styles.css')
+		new CleanWebpackPlugin(['dist']),
+		// new ExtractTextPlugin('css/styles.css'),
+		new webpack.ProvidePlugin({
+			_: 'lodash'
+		}),
+		new HtmlWebpackPlugin({
+			template: __dirname + '/src/index.html',
+			title: 'Output Management',
+			filename: 'index.html'
+		})
 	]
 };
