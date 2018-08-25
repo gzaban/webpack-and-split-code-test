@@ -1,0 +1,19 @@
+{
+  "name": "webpack-and-split-code-test",
+  "version": "1.0.0",
+  "description": "try to test how split code is working and lazy loading for JS and CSS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gzaban/webpack-and-split-code-test.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gzaban/webpack-and-split-code-test/issues"
+  },
+  "homepage": "https://github.com/gzaban/webpack-and-split-code-test#readme"
+}
