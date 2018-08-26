@@ -65,7 +65,7 @@ module.exports = {
 			_: 'lodash'
 		}),
 		new HtmlWebpackPlugin({
-			template: __dirname + '/src/index.html',
+			template: `${__dirname  }/src/index.html`,
 			title: 'Output Management',
 			filename: 'index.html'
 		})
