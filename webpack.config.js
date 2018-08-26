@@ -4,6 +4,7 @@ const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const SizePlugin = require('size-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -57,6 +58,7 @@ module.exports = {
 	},
 
 	plugins: [
+		new SizePlugin(),
 		new CleanWebpackPlugin(['dist']),
 		new MiniCssExtractPlugin({
 			filename: '[name].[contenthash].css',
