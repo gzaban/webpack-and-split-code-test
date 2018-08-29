@@ -6,6 +6,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "start": "webpack-dev-server --hot --config webpack.config.dev.js",
+    "dev:bundleanalyzer": "yarn dev -- --env.addons=bundleanalyzer",
+    "build:bundleanalyzer": "yarn build -- --env.addons=bundleanalyzer",
     "lint": "yarn run lint:js && yarn run lint:css",
     "lint:css": "stylelint './app/**/*.js'",
     "lint:eslint": "eslint src/**.js --ignore-path .gitignore --ignore-pattern internals/scripts",
@@ -59,7 +62,9 @@
     "stylelint-processor-styled-components": "^1.3.2",
     "uglifyjs-webpack-plugin": "^1.3.0",
     "webpack": "^4.17.1",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.6",
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
@@ -70,6 +75,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-helmet": "^5.2.0",
+    "react-hot-loader": "^4.3.5",
     "react-loadable": "^5.5.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
