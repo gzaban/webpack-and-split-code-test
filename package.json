@@ -1,6 +1,7 @@
 {
   "name": "webpack-and-split-code-test",
   "version": "1.0.0",
+  "sideEffects": false,
   "description": "try to test how split code is working and lazy loading for JS and CSS",
   "main": "index.js",
   "scripts": {
@@ -50,6 +51,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
+    "size-plugin": "^1.0.1",
     "style-loader": "^0.22.1",
     "stylelint": "^9.5.0",
     "stylelint-config-recommended": "^2.1.0",
