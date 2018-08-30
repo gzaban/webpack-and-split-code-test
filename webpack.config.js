@@ -6,6 +6,7 @@ const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const SizePlugin = require('size-plugin');
 const webpack = require('webpack');
+const SizePlugin = require('size-plugin');
 
 module.exports = {
 	mode: 'production',
@@ -70,6 +71,7 @@ module.exports = {
 			template: `${__dirname  }/src/index.html`,
 			title: 'Output Management',
 			filename: 'index.html'
-		})
+		}),
+    new SizePlugin()
 	]
 };

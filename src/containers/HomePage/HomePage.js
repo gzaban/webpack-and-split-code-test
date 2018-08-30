@@ -1,7 +1,7 @@
 import React from 'react';
 import './home.scss';
 
-export function HomePage() {
+export default function HomePage() {
   return (
     <article>
       <h1>
